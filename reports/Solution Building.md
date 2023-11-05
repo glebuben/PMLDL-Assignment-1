@@ -84,6 +84,7 @@ It was based on [this video](https://www.youtube.com/watch?v=T2fISIRogkg)
 
 Fine-tuning is an expensive process in terms of computations. Therefore, I used only 1 epoch
 
+Saved version of this model can be found in ../models
 ### Results
 
 For evaluation of my model I used [blue score](https://en.wikipedia.org/wiki/BLEU) and [meteor score](https://en.wikipedia.org/wiki/METEOR)
@@ -175,4 +176,91 @@ These are good proposals, but these approaches are time consumable.
 Maybe I can skip all these computations. Maybe there are already existing solution pretrained on our dataset or 
 on a similar one. So, why should I reinvent the wheel?
 
-After 
+After spending some time searching, [this model](https://huggingface.co/s-nlp/t5-paranmt-detox) was found
+
+Since this model is already pretrained on out dataset, for this solution we will only evaluate results obtained.
+This evaluation can be found in **../notebooks/2_2_pretrained_transformer_T5.ipynb**
+
+### Results
+I used same metrics.
+
+Model gave this results:
+
+![pretrained T5 bleu](./figures/t5_pretrained_bleu.png)
+![pretrained T5 meteor](./figures/t5_pretrained_meteor.png)
+
+As expected there are improvements in both scores. However,
+I thought that these improvements would be more significant,
+and more visual. Nevertheless, this model generates more 
+adequate detoxified sentences than the previous one. Below
+there are some examples
+
+#### Examples of detoxification
+* Source:  you're just scared of killing a man today.
+* Prediction:  You're just scared of killing a man today.
+* Translation:  I think you're just freaking out because you killed a guy today.
+* Bleu score:  3.5152852745683333e-78
+* Meteor score:  0.688395061728395
+
+
+* Source:  Damn near a hundred.
+* Prediction:  a hundred.
+* Translation:  hell, nearly all 100.
+* Bleu score:  1.1640469867513693e-231
+* Meteor score:  0.11904761904761905
+
+
+* Source:  you give me Ryan Wheeler, the old Wheeler, the jerk, you give me that.
+* Prediction:  You give me Ryan Wheeler, the old Wheeler, the snitch, you
+* Translation:  You give me Ryan Wheeler, the old Wheeler, the savage, you give me that guy,
+* Bleu score:  0.628450290578739
+* Meteor score:  0.807115606423565
+
+
+* Source:  This... this poor girl has every sexually transmitted disease you can get.
+* Prediction:  this poor girl has every sexually transmitted disease you can get.
+* Translation:  this poor thing... has all the communicable diseases you can get.
+* Bleu score:  0.20333448190047881
+* Meteor score:  0.5900804924242424
+
+
+* Source:  our ignorance, that's what we're gonna lose.
+* Prediction:  Our ignorance is what we lose.
+* Translation:  Our innocence, that's what we've got to lose.
+* Bleu score:  7.221948193667952e-155
+* Meteor score:  0.5792207792207792
+
+
+* Source:  oh, shit!
+* Prediction:  Oh, hell!
+* Translation:  Oh! Gosh.
+* Bleu score:  1.384292958842266e-231
+* Meteor score:  0.2380952380952381
+
+
+* Source:  Please just go out the window. Shit.
+* Prediction:  please go out the window.
+* Translation:  please come out the window.
+* Bleu score:  0.537284965911771
+* Meteor score:  0.8066666666666668
+
+
+* Source:  He kills himself. Deb can drink to his honor on her own.
+* Prediction:  Deb can drink to his honor on her own.
+* Translation:  Deb can toast herself in his honor.
+* Bleu score:  7.551819280284158e-155
+* Meteor score:  0.45510204081632655
+
+
+* Source:  Remember, you're crazy for the taste of Fruzzi yogurt.
+* Prediction:  remember, you're crazy about the taste of Fruzzi's yogurt.
+* Translation:  remember, you're rooting for the taste of that Fruzzi yoghurt.
+* Bleu score:  0.3014335251508215
+* Meteor score:  0.6502890173410405
+
+
+* Source:  I'm just looking through the fucking window!
+* Prediction:  I'm just looking through the window!
+* Translation:  I'm looking through the tucking window.
+* Bleu score:  5.542933034426911e-78
+* Meteor score:  0.7230634189159536
