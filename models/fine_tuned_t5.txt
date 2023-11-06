@@ -1,0 +1,5 @@
+Could not upload it to github. So, please, download it manually from link below
+
+link to the model: https://drive.google.com/file/d/1jMep-B_6TIMs0GpDIDbvvLGv3FdXiF8i/view?usp=sharing
+
+P.S. sorry for late commit of this file, I had problems with git lfs
